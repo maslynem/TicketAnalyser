@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: TicketAnalyser
+
+json:
+  file:
+    path: json/tickets.json
