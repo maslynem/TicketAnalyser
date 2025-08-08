@@ -1,6 +1,5 @@
 package com.example.TicketAnalyser;
 
-import com.example.TicketAnalyser.dto.CarrierPriceDeviationDto;
 import com.example.TicketAnalyser.dto.CityName;
 import com.example.TicketAnalyser.dto.FlightDurationDto;
 import com.example.TicketAnalyser.dto.TicketDto;
@@ -13,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @SpringBootApplication
@@ -33,8 +33,8 @@ public class TicketAnalyserApplication {
                 List<TicketDto> ticketsList = ticketLoader.loadTickets(args);
                 List<FlightDurationDto> flightDurationList = ticketAnalyser.analyseMinTimeBetween(ticketsList, CityName.VLADIVOSTOK, CityName.TEL_AVIV);
                 printer.print("Минимальное время полета между городами Владивосток и Тель-Авив для каждого авиаперевозчика:", flightDurationList);
-                List<CarrierPriceDeviationDto> carrierPriceDeviationList = ticketAnalyser.analysePriceMedianDeviation(ticketsList, CityName.VLADIVOSTOK, CityName.TEL_AVIV);
-                printer.print("Разница между средней ценой и медианой для полета между городами Владивосток и Тель-Авив для каждого авиаперевозчика:", carrierPriceDeviationList);
+                BigDecimal PriceDeviation = ticketAnalyser.analysePriceMedianDeviation(ticketsList, CityName.VLADIVOSTOK, CityName.TEL_AVIV);
+                printer.print("Разница между средней ценой и медианой для полета между городами Владивосток и Тель-Авив:", PriceDeviation);
             } catch (Exception ex) {
                 exceptionHandler.handle(ex);
             }

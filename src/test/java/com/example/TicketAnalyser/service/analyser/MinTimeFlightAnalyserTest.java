@@ -1,6 +1,8 @@
 package com.example.TicketAnalyser.service.analyser;
 
 import com.example.TicketAnalyser.dto.*;
+import com.example.TicketAnalyser.service.analyser.minTime.MinTimeFlightAnalyser;
+import com.example.TicketAnalyser.service.analyser.minTime.MinTimeFlightAnalyserImpl;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -13,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MinTimeFlightAnalyserTest {
 
-    private final MinTimeFlightAnalyser analyser = new MinTimeFlightAnalyser();
+    private final MinTimeFlightAnalyser analyser = new MinTimeFlightAnalyserImpl();
 
     @Test
     void testAnalyseMinTimeBetween_FilteredAndMinDurationsCorrect() {

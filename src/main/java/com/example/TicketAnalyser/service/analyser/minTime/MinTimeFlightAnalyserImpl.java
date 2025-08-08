@@ -1,4 +1,4 @@
-package com.example.TicketAnalyser.service.analyser;
+package com.example.TicketAnalyser.service.analyser.minTime;
 
 import com.example.TicketAnalyser.dto.Carrier;
 import com.example.TicketAnalyser.dto.CityName;
@@ -13,7 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class MinTimeFlightAnalyser {
+public class MinTimeFlightAnalyserImpl implements MinTimeFlightAnalyser {
+
+    @Override
     public List<FlightDurationDto> analyseMinTimeBetween(List<TicketDto> tickets, CityName originName, CityName destinationName) {
         List<TicketDto> filteredList = getFilteredList(tickets, originName, destinationName);
         Map<Carrier, Duration> carrierMinDurationMap = getCarrierMinDurationMap(filteredList);
